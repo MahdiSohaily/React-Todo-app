@@ -1,7 +1,10 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 
-export default function Header() {
-  return (
-    <div>Header</div>
-  );
-}
+const Header = () => (
+  <header>
+    <h1>Todos</h1>
+  </header>
+);
+
+export default Header;

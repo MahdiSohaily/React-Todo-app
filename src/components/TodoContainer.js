@@ -28,13 +28,18 @@ export default class TodoContainer extends Component {
     };
   }
 
+  handleCompleted = (id) => {
+    console.log(`changed${id}`);
+  };
+
   render() {
+    const { todos } = this.state;
     return (
       <>
         <Navbar />
         <Header />
         <InputTodo />
-        <TodosList todos={this.state.todos} />
+        <TodosList data={todos} handleCompleted={this.handleCompleted} />
       </>
     );
   }
