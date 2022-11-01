@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 function TodoItem({
-  id, title, completed, handleCompleted, delTodo 
+  id, title, completed, handleCompleted, delTodo,
 }) {
   return (
     <li>

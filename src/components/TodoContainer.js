@@ -43,7 +43,9 @@ export default class TodoContainer extends Component {
   };
 
   delTodo = (id) => {
-    console.log('deleted', id);
+    this.setState((prevState) => ({
+      todos: prevState.todos.filter((todo) => todo.id !== id),
+    }));
   };
 
   render() {
