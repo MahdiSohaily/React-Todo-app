@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import Header from './Header';
@@ -29,7 +30,17 @@ export default class TodoContainer extends Component {
   }
 
   handleCompleted = (id) => {
-    console.log(`changed${id}`);
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
   };
 
   render() {
