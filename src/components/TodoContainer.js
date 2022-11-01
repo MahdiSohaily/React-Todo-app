@@ -53,7 +53,11 @@ export default class TodoContainer extends Component {
         <Navbar />
         <Header />
         <InputTodo />
-        <TodosList data={todos} handleCompleted={this.handleCompleted} />
+        <TodosList
+          data={todos}
+          handleCompleted={this.handleCompleted}
+          delTodo={this.delTodo}
+        />
       </>
     );
   }
