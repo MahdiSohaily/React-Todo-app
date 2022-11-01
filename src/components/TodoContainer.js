@@ -44,7 +44,6 @@ export default class TodoContainer extends Component {
 
   delTodo = (id) => {
     const { todos } = this.state;
-    console.log(todos.filter((todo) => todo.id !== id));
     this.setState({
       todos: todos.filter((todo) => todo.id !== id),
     });
