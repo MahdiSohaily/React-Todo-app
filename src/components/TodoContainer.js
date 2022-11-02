@@ -65,16 +65,18 @@ export default class TodoContainer extends Component {
   render() {
     const { todos } = this.state;
     return (
-      <>
-        <Navbar />
-        <Header />
-        <InputTodo addTodoItem={this.addTodoItem} />
-        <TodosList
-          data={todos}
-          handleCompleted={this.handleCompleted}
-          delTodo={this.delTodo}
-        />
-      </>
+      <div className="container">
+        <div className="inner">
+          <Navbar />
+          <Header />
+          <InputTodo addTodoItem={this.addTodoItem} />
+          <TodosList
+            data={todos}
+            handleCompleted={this.handleCompleted}
+            delTodo={this.delTodo}
+          />
+        </div>
+      </div>
     );
   }
 }

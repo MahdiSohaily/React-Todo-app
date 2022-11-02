@@ -15,8 +15,9 @@ export default function InputTodo({ addTodoItem }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <input
+        className="input-text"
         type="text"
         value={title}
         onChange={(e) => {
@@ -24,7 +25,7 @@ export default function InputTodo({ addTodoItem }) {
         }}
         placeholder="Add Todo..."
       />
-      <button type="submit">Submit</button>
+      <button className="input-submit" type="submit">Submit</button>
     </form>
   );
 }
