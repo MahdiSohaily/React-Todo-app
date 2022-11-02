@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export default function InputTodo() {
+export default function InputTodo({ addTodoItem }) {
   const [title, setTitle] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(title);
+    addTodoItem(title);
   }
 
   return (
@@ -22,3 +23,7 @@ export default function InputTodo() {
     </form>
   );
 }
+
+InputTodo.propTypes = {
+  addTodoItem: PropTypes.func.isRequired,
+};
