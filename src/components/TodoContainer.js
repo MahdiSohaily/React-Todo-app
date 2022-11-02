@@ -49,6 +49,10 @@ export default class TodoContainer extends Component {
     });
   };
 
+  setUpdate = (updatedTitle, id) => {
+    console.log(updatedTitle, id);
+  };
+
   addTodoItem = (title) => {
     const { todos } = this.state;
     const todo = {
