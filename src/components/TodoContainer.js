@@ -8,8 +8,8 @@ const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
 
   const handleCompleted = (id) => {
-    setTodos((prevState) => ({
-      todos: prevState.todos.map((todo) => {
+    setTodos(
+      todos.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
@@ -18,25 +18,23 @@ const TodoContainer = () => {
         }
         return todo;
       }),
-    }));
+    );
   };
 
   const delTodo = (id) => {
-    setTodos({
-      todos: todos.filter((todo) => todo.id !== id),
-    });
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const editTodo = (updatedTitle, id) => {
-    setTodos({
-      todos: todos.map((todo) => {
+    setTodos(
+      todos.map((todo) => {
         if (todo.id === id) {
           // eslint-disable-next-line no-param-reassign
           todo.title = updatedTitle;
         }
         return todo;
       }),
-    });
+    );
   };
 
   const addTodoItem = (title) => {
@@ -46,9 +44,7 @@ const TodoContainer = () => {
       completed: false,
     };
 
-    setTodos({
-      todos: [...todos, todo],
-    });
+    setTodos([...todos, todo]);
   };
 
   useEffect(() => {
