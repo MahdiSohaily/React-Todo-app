@@ -1,37 +1,14 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodosList from './TodosList';
 
-export default class TodoContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [],
-    };
-  }
+const TodoContainer = () => {
+  const [todos, setTodos] = useState([]);
 
-  componentDidMount() {
-    const temp = localStorage.getItem('todos');
-    const loadedTodos = JSON.parse(temp);
-    if (loadedTodos) {
-      this.setState({
-        todos: loadedTodos,
-      });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { todos } = this.state;
-    if (prevState.todos !== todos) {
-      const temp = JSON.stringify(todos);
-      localStorage.setItem('todos', temp);
-    }
-  }
-
-  handleCompleted = (id) => {
-    this.setState((prevState) => ({
+  const handleCompleted = (id) => {
+    setTodos((prevState) => ({
       todos: prevState.todos.map((todo) => {
         if (todo.id === id) {
           return {
@@ -44,16 +21,14 @@ export default class TodoContainer extends Component {
     }));
   };
 
-  delTodo = (id) => {
-    const { todos } = this.state;
-    this.setState({
+  const delTodo = (id) => {
+    setTodos({
       todos: todos.filter((todo) => todo.id !== id),
     });
   };
 
-  editTodo = (updatedTitle, id) => {
-    const { todos } = this.state;
-    this.setState({
+  const editTodo = (updatedTitle, id) => {
+    setTodos({
       todos: todos.map((todo) => {
         if (todo.id === id) {
           // eslint-disable-next-line no-param-reassign
@@ -64,35 +39,33 @@ export default class TodoContainer extends Component {
     });
   };
 
-  addTodoItem = (title) => {
-    const { todos } = this.state;
+  const addTodoItem = (title) => {
     const todo = {
       id: todos.length + 1,
       title,
       completed: false,
     };
 
-    this.setState({
+    setTodos({
       todos: [...todos, todo],
     });
   };
 
-  render() {
-    const { todos } = this.state;
-    return (
-      <div className="container">
-        <div className="inner">
-          <Navbar />
-          <Header />
-          <InputTodo addTodoItem={this.addTodoItem} />
-          <TodosList
-            data={todos}
-            handleCompleted={this.handleCompleted}
-            delTodo={this.delTodo}
-            editTodo={this.editTodo}
-          />
-        </div>
+  return (
+    <div className="container">
+      <div className="inner">
+        <Navbar />
+        <Header />
+        <InputTodo addTodoItem={addTodoItem} />
+        <TodosList
+          data={todos}
+          handleCompleted={handleCompleted}
+          delTodo={delTodo}
+          editTodo={editTodo}
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default TodoContainer;
