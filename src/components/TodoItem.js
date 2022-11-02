@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './TodoItem.module.css';
 
-function TodoItem({
-  id, title, completed, handleCompleted, delTodo,
-}) {
+function TodoItem({ id, title, completed, handleCompleted, delTodo }) {
   const completedStyle = {
     fontStyle: 'italic',
     color: '#595959',
@@ -14,16 +12,18 @@ function TodoItem({
   };
   return (
     <li className={styles.item}>
-      <input
-        type="checkbox"
-        className={styles.checkbox}
-        checked={completed}
-        onChange={() => handleCompleted(id)}
-      />
-      <button type="button" onClick={() => delTodo(id)}>
-        Delete
-      </button>
-      <span style={completed ? completedStyle : null}>{title}</span>
+      <div onDoubleClick={this.handleEditing}>
+        <input
+          type="checkbox"
+          className={styles.checkbox}
+          checked={completed}
+          onChange={() => handleCompleted(id)}
+        />
+        <button type="button" onClick={() => delTodo(id)}>
+          Delete
+        </button>
+        <span style={completed ? completedStyle : null}>{title}</span>
+      </div>
     </li>
   );
 }
