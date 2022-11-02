@@ -7,6 +7,7 @@ export default function InputTodo({ addTodoItem }) {
   function handleSubmit(e) {
     e.preventDefault();
     addTodoItem(title);
+    setTitle('');
   }
 
   return (
