@@ -1,28 +1,29 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import React from 'react';
+import styles from './TodoItem.module.css';
 
 function TodoItem({
   id, title, completed, handleCompleted, delTodo,
 }) {
+  const completedStyle = {
+    fontStyle: 'italic',
+    color: '#595959',
+    opacity: 0.4,
+    textDecoration: 'line-through',
+  };
   return (
-    <li>
+    <li className={styles.item}>
       <input
         type="checkbox"
+        className={styles.checkbox}
         checked={completed}
-        onChange={() => {
-          handleCompleted(id);
-        }}
+        onChange={() => handleCompleted(id)}
       />
-      {title}
-      <button
-        type="button"
-        onClick={() => {
-          delTodo(id);
-        }}
-      >
+      <button type="button" onClick={() => delTodo(id)}>
         Delete
       </button>
+      <span style={completed ? completedStyle : null}>{title}</span>
     </li>
   );
 }
