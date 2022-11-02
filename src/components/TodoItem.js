@@ -4,9 +4,15 @@ import React, { useState } from 'react';
 import styles from './TodoItem.module.css';
 
 function TodoItem({
-  id, title, completed, handleCompleted, delTodo,
+  id,
+  title,
+  completed,
+  handleCompleted,
+  delTodo,
+  editTodo,
 }) {
   const [edit, setEdit] = useState(false);
+  const [EditTitle, setEditTitle] = useState(title);
   const completedStyle = {
     fontStyle: 'italic',
     color: '#595959',
@@ -30,7 +36,15 @@ function TodoItem({
           <span style={completed ? completedStyle : null}>{title}</span>
         </div>
       ) : (
-        <input value={title} type="text" className={styles.textInput} />
+        <input
+          type="text"
+          className={styles.textInput}
+          value={EditTitle}
+          onChange={(e) => {
+            setEditTitle(e.target.value);
+            editTodo(e.target.value, id);
+          }}
+        />
       )}
     </li>
   );
@@ -42,6 +56,7 @@ TodoItem.propTypes = {
   completed: PropTypes.bool.isRequired,
   handleCompleted: PropTypes.func.isRequired,
   delTodo: PropTypes.func.isRequired,
+  editTodo: PropTypes.func.isRequired,
 };
 
 export default TodoItem;

@@ -49,7 +49,7 @@ export default class TodoContainer extends Component {
     });
   };
 
-  setUpdate = (updatedTitle, id) => {
+  editTodo = (updatedTitle, id) => {
     console.log(updatedTitle, id);
   };
 
@@ -78,6 +78,7 @@ export default class TodoContainer extends Component {
             data={todos}
             handleCompleted={this.handleCompleted}
             delTodo={this.delTodo}
+            editTodo={this.editTodo}
           />
         </div>
       </div>
