@@ -59,7 +59,7 @@ export default class TodoContainer extends Component {
       <>
         <Navbar />
         <Header />
-        <InputTodo />
+        <InputTodo addTodoItem={this.addTodoItem} />
         <TodosList
           data={todos}
           handleCompleted={this.handleCompleted}
