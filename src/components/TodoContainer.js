@@ -12,6 +12,12 @@ export default class TodoContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then((response) => response.json())
+      .then((data) => this.setState({ todos: data }));
+  }
+
   handleCompleted = (id) => {
     this.setState((prevState) => ({
       todos: prevState.todos.map((todo) => {
