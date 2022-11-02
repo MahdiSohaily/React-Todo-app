@@ -20,6 +20,11 @@ function TodoItem({
     textDecoration: 'line-through',
   };
 
+  function handleUpdatedDone(event) {
+    if (event.key === 'Enter') {
+      setEdit(false);
+    }
+  }
   return (
     <li className={styles.item}>
       {!edit ? (
@@ -44,6 +49,7 @@ function TodoItem({
             setEditTitle(e.target.value);
             editTodo(e.target.value, id);
           }}
+          onKeyDown={handleUpdatedDone}
         />
       )}
     </li>
