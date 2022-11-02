@@ -6,8 +6,12 @@ export default function InputTodo({ addTodoItem }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    addTodoItem(title);
-    setTitle('');
+    if (title.trim()) {
+      addTodoItem(title);
+      setTitle('');
+    } else {
+      alert("Todo field can't be empty");
+    }
   }
 
   return (
