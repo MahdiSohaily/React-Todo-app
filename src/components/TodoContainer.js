@@ -51,6 +51,10 @@ const TodoContainer = () => {
     });
   };
 
+  useEffect(() => {
+    console.log('test run');
+  });
+
   return (
     <div className="container">
       <div className="inner">
