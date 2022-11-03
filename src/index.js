@@ -13,12 +13,11 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Navbar />}>
-          <Route path="/Home" element={<TodoContainer />} />
+          <Route index element={<TodoContainer />} />
           <Route path="About" element={<About />} />
           <Route path="*" element={<NotMatch />} />
         </Route>
       </Routes>
-      <TodoContainer />
     </Router>
   </React.StrictMode>,
 );
