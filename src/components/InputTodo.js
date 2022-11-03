@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FaPlusCircle } from 'react-icons/fa';
 
 export default function InputTodo({ addTodoItem }) {
   const [title, setTitle] = useState('');
@@ -25,7 +26,9 @@ export default function InputTodo({ addTodoItem }) {
         }}
         placeholder="Add Todo..."
       />
-      <button className="input-submit" type="submit">Submit</button>
+      <button className="input-submit" type="submit">
+        <FaPlusCircle />
+      </button>
     </form>
   );
 }
