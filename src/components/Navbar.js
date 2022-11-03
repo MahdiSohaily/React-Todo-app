@@ -1,16 +1,16 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   return (
     <>
-      <nav>
+      <nav className="navBar">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/About">About</Link>
+            <NavLink to="/About">About</NavLink>
           </li>
         </ul>
       </nav>
