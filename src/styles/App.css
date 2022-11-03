@@ -87,6 +87,7 @@ a.active {
   top: 40px;
   z-index: 10;
   cursor: pointer;
+  border: none;
 }
 
 .menuNav {
