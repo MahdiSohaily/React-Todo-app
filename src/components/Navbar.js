@@ -8,10 +8,10 @@ export default function Navbar() {
   };
   return (
     <>
-      <button type="button" onClick={handleToggle}>
-        {navbarOpen ? 'Close' : 'Open'}
-      </button>
       <nav className="navBar">
+        <button type="button" onClick={handleToggle}>
+          {navbarOpen ? 'Close' : 'Open'}
+        </button>
         <ul className={`menuNav ${navbarOpen ? ' showMenu' : ''}`}>
           <li>
             <NavLink to="/">Home</NavLink>
