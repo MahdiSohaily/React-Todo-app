@@ -13,7 +13,7 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Navbar />}>
-          <Route index element={<TodoContainer />} />
+          <Route path="/Home" element={<TodoContainer />} />
           <Route path="About" element={<About />} />
           <Route path="*" element={<NotMatch />} />
         </Route>

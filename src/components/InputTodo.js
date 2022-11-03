@@ -11,6 +11,7 @@ export default function InputTodo({ addTodoItem }) {
       addTodoItem(title);
       setTitle('');
     } else {
+      // eslint-disable-next-line no-alert
       alert("Todo field can't be empty");
     }
   }
