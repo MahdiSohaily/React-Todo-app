@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <main>
         <section className="medium-container">
-          <h2>Todos</h2>
+          <h1>Todos</h1>
           <div className="todoapp">
             <Header />
             <TodoList />

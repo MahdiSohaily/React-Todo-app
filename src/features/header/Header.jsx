@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { todoAdded } from '../todos/todosSlice';
+import { todoAdded } from '../../redux/todos/todoSlice';
 
 export default function Header() {
   const [text, setText] = useState('');

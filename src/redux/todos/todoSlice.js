@@ -64,3 +64,8 @@ export default function todoReducer(state = initState, action) {
       return state;
   }
 }
+
+export const todoAdded = (text) => ({
+  type: ACTIONS.TODO_ADDED,
+  payload: { id: 6, text, completed: false },
+});
