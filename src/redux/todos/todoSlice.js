@@ -69,3 +69,8 @@ export const todoAdded = (text) => ({
   type: ACTIONS.TODO_ADDED,
   payload: { id: 6, text, completed: false },
 });
+
+export const todoRemoved = (id) => ({
+  type: ACTIONS.TODO_REMOVED,
+  payload: id,
+});
