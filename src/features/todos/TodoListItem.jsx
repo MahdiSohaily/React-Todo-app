@@ -21,13 +21,17 @@ const TodoListItem = ({ todo }) => {
           <div className="todo-text">{text}</div>
         </div>
         <div className="segment buttons">
-          <select
-            className="colorPicker"
-            defaultValue={color}
-            style={{ color }}
-          >
-            <option value=""></option>{colorOptions}
-          </select>
+          <label htmlFor="color">
+            <select
+              id="color"
+              className="colorPicker"
+              defaultValue={color}
+              style={{ color }}
+            >
+              <option value="">{}</option>
+              {colorOptions}
+            </select>
+          </label>
           <button type="button" className="destroy">
             <TimesSolid />
           </button>
