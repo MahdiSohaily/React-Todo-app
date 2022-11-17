@@ -1,12 +1,17 @@
+/* eslint-disable react/prop-types */
 const RemainingTodos = ({ count }) => {
-    const suffix = count === 1 ? '' : 's'
+  const suffix = count === 1 ? '' : 's';
 
-    return (
-        <div className="todo-count">
-            <h5>Remaining Todos</h5>
-            <strong>{count}</strong> item{suffix} left
-        </div>
-    )
-}
+  return (
+    <div className="todo-count">
+      <h5>Remaining Todos</h5>
+      <strong>{count}</strong>
+      item
+      {suffix}
+      {' '}
+      left
+    </div>
+  );
+};
 
-export default RemainingTodos
+export default RemainingTodos;

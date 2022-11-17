@@ -1,29 +1,28 @@
+/* eslint-disable react/prop-types */
 const StatusFilters = {
-    All: 'all',
-    Active: 'active',
-    Completed: 'completed',
-}
+  All: 'all',
+  Active: 'active',
+  Completed: 'completed',
+};
 
 const StatusFilter = ({ value: status }) => {
-    const renderedFilters = Object.keys(StatusFilters).map((key) => {
-        const value = StatusFilters[key]
-        const className = value === status ? 'selected' : ''
-
-        return (
-            <li key={value}>
-                <button className={className}>
-                    {key}
-                </button>
-            </li>
-        )
-    })
+  const renderedFilters = Object.keys(StatusFilters).map((key) => {
+    const value = StatusFilters[key];
+    const className = value === status ? 'selected' : '';
 
     return (
-        <div className="filters statusFilters">
-            <h5>Filter by Status</h5>
-            <ul>{renderedFilters}</ul>
-        </div>
-    )
-}
+      <li key={value}>
+        <button type="button" className={className}>{key}</button>
+      </li>
+    );
+  });
 
-export default StatusFilter
+  return (
+    <div className="filters statusFilters">
+      <h5>Filter by Status</h5>
+      <ul>{renderedFilters}</ul>
+    </div>
+  );
+};
+
+export default StatusFilter;
