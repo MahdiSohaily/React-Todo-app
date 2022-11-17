@@ -6,8 +6,13 @@ const ColorFilters = ({ value: colors }) => {
     const checked = colors.includes(color);
 
     return (
-      <label htmlFor="color" key={color}>
-        <input id="color" type="checkbox" name={color} defaultChecked={checked} />
+      <label htmlFor={color} key={color}>
+        <input
+          id={color}
+          type="checkbox"
+          name={color}
+          defaultChecked={checked}
+        />
         <span
           className="color-block"
           style={{
@@ -15,6 +20,7 @@ const ColorFilters = ({ value: colors }) => {
           }}
         />
         {color}
+        <br />
       </label>
     );
   });

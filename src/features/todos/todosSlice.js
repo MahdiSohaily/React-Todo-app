@@ -1,15 +1,24 @@
 const initState = {
   entities: [
     {
-      id: 1, text: 'Deign ui', completed: true, color: 'red',
+      id: 1,
+      text: 'Deign ui',
+      completed: true,
+      color: 'red',
     },
     { id: 2, text: 'discover state', completed: false },
     { id: 3, text: 'discover actions', completed: false },
     {
-      id: 4, text: 'implement reducer', completed: false, color: 'blue',
+      id: 4,
+      text: 'implement reducer',
+      completed: false,
+      color: 'blue',
     },
     {
-      id: 5, text: 'Complete patterns', completed: false, color: 'red',
+      id: 5,
+      text: 'Complete patterns',
+      completed: false,
+      color: 'red',
     },
   ],
 };
@@ -19,10 +28,7 @@ export default function todosReducer(state = initState, action) {
     case 'todos/todoAdded':
       return {
         ...state,
-        entities: [
-          ...state.entities,
-          action.payload,
-        ],
+        entities: [...state.entities, action.payload],
       };
 
     case 'todos/todoToggled':
