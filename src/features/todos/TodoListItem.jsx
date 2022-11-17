@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as TimesSolid } from './times-solid.svg';
@@ -11,6 +12,8 @@ const TodoListItem = ({ todoId }) => {
   // get current to do to display by id
   const todo = useSelector(selectTodos).filter((item) => item.id === todoId)[0];
   const { text, completed, color } = todo;
+
+  const [defaultColor, setDefaultColor] = useState('red');
 
   // Get the available color options
   const colorOptions = availableColors.map((c) => (
@@ -49,7 +52,8 @@ const TodoListItem = ({ todoId }) => {
               id="color"
               className="colorPicker"
               defaultValue={color}
-              style={{ color }}
+              style={{ color: defaultColor }}
+              onChange={(e) => setDefaultColor(e.target.value)}
             >
               <option value="">{}</option>
               {colorOptions}
