@@ -74,3 +74,8 @@ export const todoRemoved = (id) => ({
   type: ACTIONS.TODO_REMOVED,
   payload: id,
 });
+
+export const toggleTodo = (id) => ({
+  type: ACTIONS.TODO_TOGGLED,
+  payload: id,
+});
