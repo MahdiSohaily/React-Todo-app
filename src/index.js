@@ -1,23 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import TodoContainer from './components/TodoContainer';
-import Navbar from './components/Navbar';
-import About from './pages/About';
-import NotMatch from './pages/NotMatch';
-import './styles/App.css';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { Provider } from 'react-redux';
+import store from './store';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route index element={<TodoContainer />} />
-          <Route path="About" element={<About />} />
-          <Route path="*" element={<NotMatch />} />
-        </Route>
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
+  document.getElementById('root')
 );
