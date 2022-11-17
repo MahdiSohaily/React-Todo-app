@@ -32,4 +32,35 @@ const initState = {
   ],
 };
 
-
+export default function todoReducer(state = initState, action) {
+  switch (action.type) {
+    case ACTIONS.TODO_ADDED:
+      return {
+        ...state,
+        entities: [...state.entities, action.payload],
+      };
+    case ACTIONS.TODO_REMOVED:
+      return {
+        ...state,
+        entities: state.entities.filter((todo) => todo.id !== action.payload),
+      };
+    case ACTIONS.TODO_TOGGLED:
+      return {
+        ...state,
+        entities: state.entities.map((todo) => {
+          if (todo.id === action.payload) {
+            return {
+              ...todo,
+              completed: !todo.completed,
+            };
+          }
+          return todo;
+        }),
+      };
+    case ACTIONS.TODO_COLOR_SELECTED:
+    case ACTIONS.TODOS_MARKED_COMPLETED:
+    case ACTIONS.COMPLETED_TODOS_DELETED:
+    default:
+      return state;
+  }
+}
