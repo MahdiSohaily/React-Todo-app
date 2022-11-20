@@ -54,7 +54,12 @@ const todoReducer = produce((state, action) => {
       break;
     case ACTIONS.TODO_COLOR_SELECTED:
     case ACTIONS.TODOS_MARKED_COMPLETED:
-    case ACTIONS.COMPLETED_TODOS_DELETED:
+      const todos = Object.values(state.entities);
+      todos.forEach((todo) => {
+        todo.completed = true;
+      });
+      break;
+    
     default:
       return state;
   }
@@ -75,4 +80,12 @@ export const todoRemoved = (id) => ({
 export const toggleTodo = (id) => ({
   type: ACTIONS.TODO_TOGGLED,
   payload: id,
+});
+
+export const markAllCompleted = () => ({
+  type: ACTIONS.TODOS_MARKED_COMPLETED,
+});
+
+export const deleteCompleted = () => ({
+  type: ACTIONS.COMPLETED_TODOS_DELETED,
 });
