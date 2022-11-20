@@ -59,7 +59,14 @@ const todoReducer = produce((state, action) => {
         todo.completed = true;
       });
       break;
-    
+    case ACTIONS.COMPLETED_TODOS_DELETED:
+      const allTodos = Object.values(state.entities);
+      allTodos.forEach((todo) => {
+        if (todo.completed) {
+          delete state.entities[todo.id];
+        }
+      });
+      break;
     default:
       return state;
   }
