@@ -1,3 +1,8 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
+import produce from 'immer';
+
 /* eslint-disable no-case-declarations */
 const ACTIONS = {
   TODO_ADDED: 'todo/todo_added',
@@ -33,43 +38,22 @@ const initState = {
   },
 };
 
-export default function todoReducer(state = initState, action) {
+const todoReducer = produce((state, action) => {
   switch (action.type) {
     case ACTIONS.TODO_ADDED:
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          [action.payload.id]: action.payload,
-        },
-      };
-    case ACTIONS.TODO_REMOVED:
-      const entities = { ...state.entities };
-      delete entities[action.payload];
-      return {
-        ...state,
-        entities,
-      };
-    case ACTIONS.TODO_TOGGLED:
-      const toggleId = action.payload;
-      const todo = state.entities[toggleId];
-      return {
-        ...state,
-        entities: {
-          ...state.entities,
-          [toggleId]: {
-            ...todo,
-            completed: !todo.completed,
-          },
-        },
-      };
+      const todoItem = action.payload;
+      state.entities[todoItem.id] = todoItem;
+      break;
+    
     case ACTIONS.TODO_COLOR_SELECTED:
     case ACTIONS.TODOS_MARKED_COMPLETED:
     case ACTIONS.COMPLETED_TODOS_DELETED:
     default:
       return state;
   }
-}
+}, initState);
+
+export default todoReducer;
 
 export const todoAdded = (text) => ({
   type: ACTIONS.TODO_ADDED,
