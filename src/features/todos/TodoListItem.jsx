@@ -40,6 +40,10 @@ const TodoListItem = ({ todoId }) => {
     dispatch(todoRemoved(id));
   };
 
+  const handleColorChange = (id, color) => {
+    setDefaultColor(color);
+  };
+
   return (
     <li>
       <div className="view">
@@ -59,7 +63,7 @@ const TodoListItem = ({ todoId }) => {
               className="colorPicker"
               defaultValue={color}
               style={{ color: defaultColor }}
-              onChange={(e) => setDefaultColor(e.target.value)}
+              onChange={(e) => handleColorChange(id, e.target.value)}
             >
               <option value="">{}</option>
               {colorOptions}
