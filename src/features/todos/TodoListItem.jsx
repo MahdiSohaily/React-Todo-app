@@ -6,9 +6,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as TimesSolid } from './times-solid.svg';
-import { todoRemoved, toggleTodo } from '../../redux/todos/todoSlice';
+import {
+  todoRemoved,
+  toggleTodo,
+  availableColors,
+} from '../../redux/todos/todoSlice';
 
-export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 export const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 
 const TodoListItem = ({ todoId }) => {

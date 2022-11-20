@@ -13,6 +13,8 @@ const ACTIONS = {
   COMPLETED_TODOS_DELETED: 'todos/completed_todos_deleted',
 };
 
+export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
+
 const initState = {
   entities: {
     1: {
