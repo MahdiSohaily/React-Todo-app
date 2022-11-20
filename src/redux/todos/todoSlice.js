@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
+import { type } from '@testing-library/user-event/dist/type';
 import produce from 'immer';
 
 /* eslint-disable no-case-declarations */
@@ -97,4 +98,12 @@ export const markAllCompleted = () => ({
 
 export const deleteCompleted = () => ({
   type: ACTIONS.COMPLETED_TODOS_DELETED,
+});
+
+export const todoColorChange = (id, color) => ({
+  type: ACTIONS.TODO_COLOR_SELECTED,
+  payload: {
+    id,
+    color,
+  },
 });
