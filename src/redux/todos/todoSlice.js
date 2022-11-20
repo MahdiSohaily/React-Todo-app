@@ -8,28 +8,28 @@ const ACTIONS = {
 };
 
 const initState = {
-  entities: [
-    {
+  entities: {
+    1: {
       id: 1,
       text: 'Deign ui',
       completed: true,
       color: 'red',
     },
-    { id: 2, text: 'discover state', completed: false },
-    { id: 3, text: 'discover actions', completed: false },
-    {
+    2: { id: 2, text: 'discover state', completed: false },
+    3: { id: 3, text: 'discover actions', completed: false },
+    4: {
       id: 4,
       text: 'implement reducer',
       completed: false,
       color: 'blue',
     },
-    {
+    5: {
       id: 5,
       text: 'Complete patterns',
       completed: false,
       color: 'red',
     },
-  ],
+  },
 };
 
 export default function todoReducer(state = initState, action) {
