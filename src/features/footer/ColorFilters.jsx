@@ -1,7 +1,10 @@
-/* eslint-disable react/prop-types */
+import { useSelector } from 'react-redux';
+import { currentColors } from '../../utilities/todo/selector';
+
 export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 
-const ColorFilters = ({ value: colors }) => {
+const ColorFilters = () => {
+  const colors = useSelector(currentColors);
   const renderedColors = availableColors.map((color) => {
     const checked = colors.includes(color);
 

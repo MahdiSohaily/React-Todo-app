@@ -4,7 +4,7 @@ const ACTIONS = {
   COLORS_CHANGED: 'filter/colorsChanged',
 };
 
-const STATUS = {
+export const STATUS = {
   ALL: 'all',
   COMPLETED: 'completed',
   ACTIVE: 'active',

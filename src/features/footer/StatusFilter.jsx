@@ -1,18 +1,19 @@
-/* eslint-disable react/prop-types */
-const StatusFilters = {
-  All: 'all',
-  Active: 'active',
-  Completed: 'completed',
-};
+import { useSelector } from 'react-redux';
+import { STATUS as StatusFilters } from '../../redux/filters/filterSlice';
+import { currentStatus } from '../../utilities/todo/selector';
 
-const StatusFilter = ({ value: status }) => {
+const StatusFilter = () => {
+  const status = useSelector(currentStatus);
+
   const renderedFilters = Object.keys(StatusFilters).map((key) => {
     const value = StatusFilters[key];
     const className = value === status ? 'selected' : '';
 
     return (
       <li key={value}>
-        <button type="button" className={className}>{key}</button>
+        <button type="button" className={className}>
+          {key}
+        </button>
       </li>
     );
   });

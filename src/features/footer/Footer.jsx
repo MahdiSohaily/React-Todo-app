@@ -1,20 +1,12 @@
 import ColorFilters from './ColorFilters';
 import StatusFilter from './StatusFilter';
 import RemainingTodos from './RemainingTodos';
+import Actions from './Actions';
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="actions">
-        <h5>Actions</h5>
-        <button type="button" className="button">
-          Mark All Completed
-        </button>
-        <button type="button" className="button">
-          Clear Completed
-        </button>
-      </div>
-
+      <Actions />
       <RemainingTodos count={1} />
       <StatusFilter value="all" />
       <ColorFilters value={[]} />
