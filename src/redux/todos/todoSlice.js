@@ -56,13 +56,10 @@ export default function todoReducer(state = initState, action) {
       return {
         ...state,
         entities: {
-          ...state,
-          entities: {
-            ...state.entities,
-            [toggleId]: {
-              ...todo,
-              completed: !todo.completed,
-            },
+          ...state.entities,
+          [toggleId]: {
+            ...todo,
+            completed: !todo.completed,
           },
         },
       };
