@@ -10,6 +10,7 @@ import {
   todoRemoved,
   toggleTodo,
   availableColors,
+  todoColorChange,
 } from '../../redux/todos/todoSlice';
 
 export const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
@@ -42,6 +43,7 @@ const TodoListItem = ({ todoId }) => {
 
   const handleColorChange = (id, color) => {
     setDefaultColor(color);
+    dispatch(todoColorChange(id, color));
   };
 
   return (

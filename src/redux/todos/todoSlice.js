@@ -1,10 +1,7 @@
-/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-use-before-define */
-import { type } from '@testing-library/user-event/dist/type';
+/* eslint-disable consistent-return */
 import produce from 'immer';
 
-/* eslint-disable no-case-declarations */
 const ACTIONS = {
   TODO_ADDED: 'todo/todo_added',
   TODO_REMOVED: 'todo/todo_removed',
@@ -43,26 +40,33 @@ const initState = {
 
 const todoReducer = produce((state, action) => {
   switch (action.type) {
-    case ACTIONS.TODO_ADDED:
+    case ACTIONS.TODO_ADDED: {
       const todoItem = action.payload;
       state.entities[todoItem.id] = todoItem;
       break;
-    case ACTIONS.TODO_REMOVED:
+    }
+    case ACTIONS.TODO_REMOVED: {
       const id = action.payload;
       delete state.entities[id];
       break;
-    case ACTIONS.TODO_TOGGLED:
+    }
+    case ACTIONS.TODO_TOGGLED: {
       const toggleId = action.payload;
       state.entities[toggleId].completed = !state.entities[toggleId].completed;
       break;
-    case ACTIONS.TODO_COLOR_SELECTED:
-    case ACTIONS.TODOS_MARKED_COMPLETED:
+    }
+    case ACTIONS.TODO_COLOR_SELECTED: {
+      state.entities[action.payload.id].color = action.payload.color;
+      break;
+    }
+    case ACTIONS.TODOS_MARKED_COMPLETED: {
       const todos = Object.values(state.entities);
       todos.forEach((todo) => {
         todo.completed = true;
       });
       break;
-    case ACTIONS.COMPLETED_TODOS_DELETED:
+    }
+    case ACTIONS.COMPLETED_TODOS_DELETED: {
       const allTodos = Object.values(state.entities);
       allTodos.forEach((todo) => {
         if (todo.completed) {
@@ -70,6 +74,7 @@ const todoReducer = produce((state, action) => {
         }
       });
       break;
+    }
     default:
       return state;
   }
