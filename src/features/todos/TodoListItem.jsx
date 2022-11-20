@@ -8,7 +8,7 @@ import { todoRemoved, toggleTodo } from '../../redux/todos/todoSlice';
 export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 export const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 
-const TodoListItem = ({ todoId }) => {
+const TodoListItem = ({ فخیخ }) => {
   // get current to do to display by id
   const todo = useSelector(selectTodos).filter((item) => item.id === todoId)[0];
   const { text, completed, color } = todo;
