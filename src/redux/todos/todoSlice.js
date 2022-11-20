@@ -44,7 +44,11 @@ const todoReducer = produce((state, action) => {
       const todoItem = action.payload;
       state.entities[todoItem.id] = todoItem;
       break;
-    
+    case ACTIONS.TODO_REMOVED:
+      const id = action.payload;
+      delete state.entities[id];
+      break;
+   
     case ACTIONS.TODO_COLOR_SELECTED:
     case ACTIONS.TODOS_MARKED_COMPLETED:
     case ACTIONS.COMPLETED_TODOS_DELETED:
