@@ -1,10 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { currentColors } from '../../utilities/todo/selector';
 
 export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 
 const ColorFilters = () => {
   const colors = useSelector(currentColors);
+  const dispatch = useDispatch();
+
+  const handleFilterColor = () => {
+    
+  };
+
   const renderedColors = availableColors.map((color) => {
     const checked = colors.includes(color);
 
@@ -15,6 +21,9 @@ const ColorFilters = () => {
           type="checkbox"
           name={color}
           defaultChecked={checked}
+          onChange={() => {
+            handleFilterColor(color);
+          }}
         />
         <span
           className="color-block"
