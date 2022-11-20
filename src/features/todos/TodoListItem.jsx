@@ -1,17 +1,17 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ReactComponent as TimesSolid } from './times-solid.svg';
-import { selectTodos } from '../../utilities/todo/selector';
 import { todoRemoved, toggleTodo } from '../../redux/todos/todoSlice';
 
 export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 export const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 
-const TodoListItem = ({ فخیخ }) => {
+const TodoListItem = ({ todo }) => {
   // get current to do to display by id
-  const todo = useSelector(selectTodos).filter((item) => item.id === todoId)[0];
-  const { text, completed, color } = todo;
+  const {
+    id, text, completed, color,
+  } = todo;
 
   const [defaultColor, setDefaultColor] = useState('red');
 
@@ -42,7 +42,7 @@ const TodoListItem = ({ فخیخ }) => {
             className="toggle"
             type="checkbox"
             checked={completed}
-            onChange={() => handleToggle(todoId)}
+            onChange={() => handleToggle(id)}
           />
           <div className="todo-text">{text}</div>
         </div>
@@ -62,7 +62,7 @@ const TodoListItem = ({ فخیخ }) => {
           <button
             type="button"
             className="destroy"
-            onClick={() => handleRemove(todoId)}
+            onClick={() => handleRemove(id)}
           >
             <TimesSolid />
           </button>
@@ -70,10 +70,6 @@ const TodoListItem = ({ فخیخ }) => {
       </div>
     </li>
   );
-};
-
-TodoListItem.propTypes = {
-  todoId: PropTypes.number.isRequired,
 };
 
 export default TodoListItem;
