@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useDispatch, useSelector } from 'react-redux';
 import { colorsChanged } from '../../redux/filters/filterSlice';
 import { currentColors } from '../../utilities/todo/selector';

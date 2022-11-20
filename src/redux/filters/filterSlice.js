@@ -28,8 +28,9 @@ const filterReducer = produce((state, action) => {
       const color = action.payload;
       if (state.colors.indexOf(color) < 0) {
         state.colors.push(color);
+      } else {
+        state.colors = state.colors.filter((item) => item !== color);
       }
-      state.colors.filter((item) => item !== color);
       break;
     default:
       return state;
