@@ -1,4 +1,4 @@
-const selectTodosID = (state) => state.todos.entities;
+const selectTodosID = (state) => Object.keys(state.todos.entities);
 export default selectTodosID;
 
 export const selectTodos = (state) => state.todos.entities;

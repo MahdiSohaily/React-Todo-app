@@ -8,8 +8,8 @@ export default function Footer() {
     <footer className="footer">
       <Actions />
       <RemainingTodos count={1} />
-      <StatusFilter value="all" />
-      <ColorFilters value={[]} />
+      <StatusFilter />
+      <ColorFilters />
     </footer>
   );
 }
