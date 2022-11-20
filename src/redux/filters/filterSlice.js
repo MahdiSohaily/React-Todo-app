@@ -1,3 +1,7 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable consistent-return */
+import produce from 'immer';
+
 /* eslint-disable no-case-declarations */
 const ACTIONS = {
   STATUS_CHANGED: 'filter/statusChanged',
@@ -15,30 +19,22 @@ const initState = {
   colors: [],
 };
 
-const filterReducer = (state = initState, action) => {
+const filterReducer = produce((state, action) => {
   switch (action.type) {
     case ACTIONS.STATUS_CHANGED:
-      return {
-        ...state,
-        status: action.payload,
-      };
+      state.status = action.payload;
+      break;
     case ACTIONS.COLORS_CHANGED:
       const color = action.payload;
       if (state.colors.indexOf(color) < 0) {
-        return {
-          ...state,
-          colors: [...state.colors, color],
-        };
+        state.colors.push(color);
       }
-      return {
-        ...state,
-        colors: state.colors.filter((item) => item !== color),
-      };
-
+      state.colors.filter((item) => item !== color);
+      break;
     default:
       return state;
   }
-};
+}, initState);
 export default filterReducer;
 
 export const colorsChanged = (color) => ({
