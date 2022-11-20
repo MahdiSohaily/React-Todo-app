@@ -1,15 +1,16 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as TimesSolid } from './times-solid.svg';
 import { todoRemoved, toggleTodo } from '../../redux/todos/todoSlice';
 
 export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 export const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 
-const TodoListItem = ({ todo }) => {
+const TodoListItem = ({ todoId }) => {
   // get current to do to display by id
+  const todo = useSelector((state) => state.todos.entities[todoId]);
   const { id, text, completed, color } = todo;
 
   const [defaultColor, setDefaultColor] = useState(color);
