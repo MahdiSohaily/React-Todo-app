@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
