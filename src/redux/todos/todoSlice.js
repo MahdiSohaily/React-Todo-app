@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 const ACTIONS = {
   TODO_ADDED: 'todo/todo_added',
   TODO_REMOVED: 'todo/todo_removed',
@@ -37,25 +38,23 @@ export default function todoReducer(state = initState, action) {
     case ACTIONS.TODO_ADDED:
       return {
         ...state,
-        entities: [...state.entities, action.payload],
+        entities: {
+          ...state.entities,
+          [action.payload.id]: action.payload,
+        },
       };
     case ACTIONS.TODO_REMOVED:
+      const entities = { ...state.entities };
+      delete entities[action.payload];
       return {
         ...state,
-        entities: state.entities.filter((todo) => todo.id !== action.payload),
+        entities,
       };
     case ACTIONS.TODO_TOGGLED:
+      const toggleId = action.payload;
+      const todo = state.entities[toggleId];
       return {
-        ...state,
-        entities: state.entities.map((todo) => {
-          if (todo.id === action.payload) {
-            return {
-              ...todo,
-              completed: !todo.completed,
-            };
-          }
-          return todo;
-        }),
+        
       };
     case ACTIONS.TODO_COLOR_SELECTED:
     case ACTIONS.TODOS_MARKED_COMPLETED:
