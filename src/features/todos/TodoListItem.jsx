@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -9,11 +10,9 @@ export const capitalize = (s) => s[0].toUpperCase() + s.slice(1);
 
 const TodoListItem = ({ todo }) => {
   // get current to do to display by id
-  const {
-    id, text, completed, color,
-  } = todo;
+  const { id, text, completed, color } = todo;
 
-  const [defaultColor, setDefaultColor] = useState('red');
+  const [defaultColor, setDefaultColor] = useState(color);
 
   // Get the available color options
   const colorOptions = availableColors.map((c) => (
