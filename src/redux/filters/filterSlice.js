@@ -41,3 +41,7 @@ const filterReducer = (state = initState, action) => {
 };
 export default filterReducer;
 
+export const colorsChanged = (color) => ({
+  type: ACTIONS.COLORS_CHANGED,
+  payload: color,
+});
