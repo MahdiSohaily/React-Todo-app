@@ -54,7 +54,17 @@ export default function todoReducer(state = initState, action) {
       const toggleId = action.payload;
       const todo = state.entities[toggleId];
       return {
-        
+        ...state,
+        entities: {
+          ...state,
+          entities: {
+            ...state.entities,
+            [toggleId]: {
+              ...todo,
+              completed: !todo.completed,
+            },
+          },
+        },
       };
     case ACTIONS.TODO_COLOR_SELECTED:
     case ACTIONS.TODOS_MARKED_COMPLETED:
