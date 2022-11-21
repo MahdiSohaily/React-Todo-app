@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { todoAdded } from '../../redux/todos/todoSlice';
+import { saveNewTodo } from '../../redux/todos/todoSlice';
 
 export default function Header() {
   const [text, setText] = useState('');
@@ -10,7 +10,7 @@ export default function Header() {
   const handleKeyDown = (e) => {
     const trimmedText = text.trim();
     if (e.which === 13 && trimmedText) {
-      dispatch(todoAdded(trimmedText));
+      dispatch(saveNewTodo(trimmedText));
 
       setText('');
     }
