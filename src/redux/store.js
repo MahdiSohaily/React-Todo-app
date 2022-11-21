@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import createStore, { applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducer';
-import client from '../api/client';
+import { client } from '../api/client';
 
 const fetchTodosMiddleware = (storeApi) => (next) => (action) => {
   if (action.type === 'todos/fetchTodos') {
