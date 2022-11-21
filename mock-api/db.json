@@ -1,0 +1,9 @@
+{
+    "todos": [
+        { "id": 1, "text": "Deign ui", "completed": true, "color": "red" },
+        { "id": 2, "text": "discover state", "completed": false },
+        { "id": 3, "text": "discover actions", "completed": false },
+        { "id": 4, "text": "implement reducer", "completed": false, "color": "blue" },
+        { "id": 5, "text": "Complete patterns", "completed": false, "color": "red" }
+    ]
+}
