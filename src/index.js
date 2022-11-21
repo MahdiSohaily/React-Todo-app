@@ -4,12 +4,11 @@ import './index.css';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux/store';
+import { fetchTodos } from './redux/todos/todoSlice';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-store.dispatch({
-  type: 'todos/fetchTodos',
-});
+store.dispatch(fetchTodos);
 
 root.render(
   <React.StrictMode>

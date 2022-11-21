@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
 import produce from 'immer';
+import { client } from '../../api/client';
 
 const ACTIONS = {
   TODOS_LOADED: 'todos/todosLoaded',
@@ -71,6 +72,11 @@ const todoReducer = produce((state, action) => {
 
 export default todoReducer;
 
+const assaignLoadedTodos = (todos) => ({
+  type: 'todos/todosLoaded',
+  payload: todos,
+});
+
 export const todoAdded = (text) => ({
   type: ACTIONS.TODO_ADDED,
   payload: { id: Math.floor(Math.random() * 100 + 1), text, completed: false },
@@ -101,3 +107,10 @@ export const todoColorChange = (id, color) => ({
     color,
   },
 });
+
+// ASYNC FUNCTIONS
+export const fetchTodos = (dispatch) => {
+  client.get('todos').then((todos) => {
+    dispatch(assaignLoadedTodos(todos));
+  });
+};
