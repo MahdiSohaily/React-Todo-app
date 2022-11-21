@@ -9,6 +9,14 @@ const TodoList = () => {
     <TodoListItem key={id} todoId={id} />
   ));
 
+  if (true) {
+    return (
+      <div className="todo-list">
+        <div className="loader" />
+      </div>
+    );
+  }
+
   return <ul className="todo-list">{renderedListItems}</ul>;
 };
 
