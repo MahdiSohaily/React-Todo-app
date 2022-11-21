@@ -109,6 +109,12 @@ export const todoColorChange = (id, color) => ({
 });
 
 // ASYNC FUNCTIONS
+export const saveNewTodo = (text) => async (dispatch) => {
+  const newTodo = { text, completed: false };
+  const result = await client.post('todos', newTodo);
+  dispatch(todoAdded(result));
+};
+
 export const fetchTodos = (dispatch) => {
   client.get('todos').then((todos) => {
     dispatch(assaignLoadedTodos(todos));
