@@ -77,9 +77,9 @@ const assaignLoadedTodos = (todos) => ({
   payload: todos,
 });
 
-export const todoAdded = (text) => ({
+export const todoAdded = (todo) => ({
   type: ACTIONS.TODO_ADDED,
-  payload: { id: Math.floor(Math.random() * 100 + 1), text, completed: false },
+  payload: todo,
 });
 
 export const todoRemoved = (id) => ({
