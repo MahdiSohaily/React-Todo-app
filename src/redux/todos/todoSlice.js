@@ -17,6 +17,7 @@ export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 
 const initState = {
   entities: {},
+  status: 'ideal',
 };
 
 const todoReducer = produce((state, action) => {
