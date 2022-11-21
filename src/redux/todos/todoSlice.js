@@ -3,6 +3,7 @@
 import produce from 'immer';
 
 const ACTIONS = {
+  TODOS_LOADED: 'todos/todosLoaded',
   TODO_ADDED: 'todo/todo_added',
   TODO_REMOVED: 'todo/todo_removed',
   TODO_TOGGLED: 'todo/todo_toggled',
@@ -14,32 +15,20 @@ const ACTIONS = {
 export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 
 const initState = {
-  entities: {
-    1: {
-      id: 1,
-      text: 'Deign ui',
-      completed: true,
-      color: 'red',
-    },
-    2: { id: 2, text: 'discover state', completed: false },
-    3: { id: 3, text: 'discover actions', completed: false },
-    4: {
-      id: 4,
-      text: 'implement reducer',
-      completed: false,
-      color: 'blue',
-    },
-    5: {
-      id: 5,
-      text: 'Complete patterns',
-      completed: false,
-      color: 'red',
-    },
-  },
+  entities: {},
 };
 
 const todoReducer = produce((state, action) => {
   switch (action.type) {
+    case ACTIONS.TODOS_LOADED: {
+      const todos = action.payload;
+      const entities = {};
+      todos.forEach((item) => {
+        entities[item.id] = item;
+      });
+      state.entities = entities;
+      break;
+    }
     case ACTIONS.TODO_ADDED: {
       const todoItem = action.payload;
       state.entities[todoItem.id] = todoItem;
