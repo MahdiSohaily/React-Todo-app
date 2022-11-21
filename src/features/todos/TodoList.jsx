@@ -4,12 +4,13 @@ import TodoListItem from './TodoListItem';
 
 const TodoList = () => {
   const todosId = useSelector(selectTodosID, shallowEqual);
+  const loading = useSelector((state) => state.todos.status);
 
   const renderedListItems = todosId.map((id) => (
     <TodoListItem key={id} todoId={id} />
   ));
 
-  if (true) {
+  if (loading === 'loading') {
     return (
       <div className="todo-list">
         <div className="loader" />
