@@ -11,6 +11,8 @@ const ACTIONS = {
   TODO_COLOR_SELECTED: 'todo/todo_color_selected',
   TODOS_MARKED_COMPLETED: 'todos/todos_marked_completed',
   COMPLETED_TODOS_DELETED: 'todos/completed_todos_deleted',
+  STATUS_CHANGED: 'todos/statusChange',
+  FETCHING_FAILED: 'todos/fetchingFailed',
 };
 
 export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
@@ -29,6 +31,7 @@ const todoReducer = produce((state, action) => {
         entities[item.id] = item;
       });
       state.entities = entities;
+      state.status = 'ideal';
       break;
     }
     case ACTIONS.TODO_ADDED: {
@@ -66,6 +69,14 @@ const todoReducer = produce((state, action) => {
       });
       break;
     }
+    case ACTIONS.STATUS_CHANGED: {
+      state.status = 'loading';
+      break;
+    }
+    case ACTIONS.FETCHING_FAILED: {
+      state.status = 'error';
+      break;
+    }
     default:
       return state;
   }
@@ -73,8 +84,16 @@ const todoReducer = produce((state, action) => {
 
 export default todoReducer;
 
-const assaignLoadedTodos = (todos) => ({
-  type: 'todos/todosLoaded',
+const todoLoadingStart = (todos) => ({
+  type: ACTIONS.STATUS_CHANGED,
+  payload: todos,
+});
+const todoLoadingSuccess = (todos) => ({
+  type: ACTIONS.TODOS_LOADED,
+  payload: todos,
+});
+const todoLoadingFailed = (todos) => ({
+  type: ACTIONS.FETCHING_FAILED,
   payload: todos,
 });
 
@@ -117,7 +136,11 @@ export const saveNewTodo = (text) => async (dispatch) => {
 };
 
 export const fetchTodos = (dispatch) => {
-  client.get('todos').then((todos) => {
-    dispatch(assaignLoadedTodos(todos));
-  });
+  dispatch(todoLoadingStart());
+  client
+    .get('todos')
+    .then((todos) => {
+      dispatch(todoLoadingSuccess(todos));
+    })
+    .catch(() => dispatch(todoLoadingFailed()));
 };

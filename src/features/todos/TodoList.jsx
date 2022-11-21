@@ -18,6 +18,14 @@ const TodoList = () => {
     );
   }
 
+  if (loading === 'error') {
+    return (
+      <div className="todo-list">
+        <p>Something went wrong while fetching data from database</p>
+      </div>
+    );
+  }
+
   return <ul className="todo-list">{renderedListItems}</ul>;
 };
 
